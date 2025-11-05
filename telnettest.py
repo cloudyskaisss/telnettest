@@ -31,16 +31,16 @@ async def shell(reader, writer):
         print(inp)
         print(command)
 
-    writer.close() # Close the connection
+    writer.close()
 
 async def main():
     server = await telnetlib3.create_server(
-        host='31.97.209.167',  # Listen on localhost
+        host='31.97.209.167',
         port=23,
-        shell=shell        # Assign the shell function to handle client interactions
+        shell=shell
     )
     print(f"Telnet server listening on {server.sockets[0].getsockname()}")
-    await server.wait_closed() # Keep the server running until manually stopped
+    await server.wait_closed()
 
 if __name__ == '__main__':
     asyncio.run(main())
