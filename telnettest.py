@@ -13,6 +13,11 @@ async def shell(reader, writer):
                 return
 
             writer.write(inp)
+            if inp in ('\x08', '\x7f'):
+                if command:
+                    command = command[:-1]
+                    writer.write("\b \b")
+                continue
 
             if inp in ("\r", "\n"):
                 break
