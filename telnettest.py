@@ -12,7 +12,7 @@ async def shell(reader, writer):
             if not inp:
                 return
 
-            writer.echo(inp)
+            writer.write(inp)
 
             if inp in ("\r", "\n"):
                 break
@@ -21,12 +21,12 @@ async def shell(reader, writer):
 
         command = command.strip()
         if command == 'exit':
-            writer.write('Goodbye!\r\n')
+            writer.write('\r\nGoodbye!\r\n')
             break
         elif command == 'hello':
-            writer.write('Hello there!\r\n')
+            writer.write('\r\nHello there!\r\n')
         else:
-            writer.write(f'Unknown command: {command}\r\n')
+            writer.write(f'\r\nUnknown command: {command}\r\n')
 
         print(inp)
         print(command)
